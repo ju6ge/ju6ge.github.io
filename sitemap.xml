@@ -3,12 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.felixrichter.tech/categories/</loc>
-    <priority>0</priority>
+    <loc>https://www.felixrichter.tech/</loc>
   </url>
   
   <url>
-    <loc>https://www.felixrichter.tech/</loc>
+    <loc>https://www.felixrichter.tech/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
