@@ -8,12 +8,18 @@
   
   <url>
     <loc>https://www.felixrichter.tech/categories/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.felixrichter.tech/posts/</loc>
   </url>
   
   <url>
     <loc>https://www.felixrichter.tech/tags/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.felixrichter.tech/writeups/</loc>
   </url>
   
 </urlset>
