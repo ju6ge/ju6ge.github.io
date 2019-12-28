@@ -69,7 +69,7 @@
     <div class="post-content">
       <p>Lately I have been doing programming for embedded systems such as the
 esp32 and esp8266, and additionally I did a course on embedded systems for
-my masters degree. This introduced me to the wonderful word of programming
+my masters degree. This introduced me to the wonderful world of programming
 close to the hardware level, and inspired me to write this post about
 hardware peripherals.</p>
 <h1 id="what-are-hardware-peripherals">What are Hardware Peripherals?</h1>
@@ -77,7 +77,7 @@ hardware peripherals.</p>
 a processor. They are used to perform a diverse set of task. This includes
 controlling the processors clock speed, power management and communication
 with other devices. They are responsible for configuring the device operation
-and during operation are used to perform task in parallel with the main
+and during operation are used to perform tasks in parallel with the main
 cores.</p>
 <h4 id="so-what-can-these-peripherals-do">So what can these peripherals do?</h4>
 <p>Anyone who has ever looked into the data sheet of a microprocessor will know
@@ -251,8 +251,8 @@ To control a pin we have to do the following steps:</p>
 <p>For rust there is no official library from atmel, but there is a project
 called svd2rust that allows us to auto-generate a library that we can use
 to address the correct peripheral registers. All we need is the svd file of
-the processor we are using, this is an xml file describing all the peripheral
-and their configuration values.</p>
+the processor we are using, this is an xml file describing all the peripherals
+and their register values.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">	<span style="color:#66d9ef">use</span> atsame70q21::{Peripherals}
 	
 	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">timeout_ms</span>(peripherals : <span style="color:#66d9ef">&amp;</span> <span style="color:#a6e22e">Peripherals</span>, <span style="color:#66d9ef">u32</span> ms) {
@@ -291,7 +291,11 @@ and their configuration values.</p>
 			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>);
 		}
 	}
-</code></pre></div>
+</code></pre></div><p>The logic of the rust code is exactly the same as the C example, and since all of the actual functionality we are using
+is provided by the hardware and not by the language specifics the code looks mostly the same.</p>
+<p>I hope you liked this little excursion into bare metal programming, i am sure i will return with more blog post regarding
+similar topics while i keep experimenting more with rust on bare metal systems.</p>
+
     </div>
     <div class="post-footer">
       
