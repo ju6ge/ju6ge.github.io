@@ -2,7 +2,7 @@
   <title>Felix Richter Website</title>
   <link href="https://www.felixrichter.tech/feed.xml" rel="self"/>
   <link href="https://www.felixrichter.tech/"/>
-  <updated>2020-01-29T00:00:00+00:00</updated>
+  <updated>2020-03-29T00:00:00+00:00</updated>
   <id>https://www.felixrichter.tech/</id>
   <generator>Hugo -- gohugo.io</generator>
   <entry>
@@ -12,8 +12,8 @@
     <author>
       <name>Felix Richter</name>
     </author>
-	<published>2020-01-29T00:00:00+00:00</published>
-	<updated>2020-01-29T00:00:00+00:00</updated>
+	<published>2020-03-29T00:00:00+00:00</published>
+	<updated>2020-03-29T00:00:00+00:00</updated>
 	<content type="html"><![CDATA[<p>I did a seminar talk on JTAG and how to use it to check a PCB for errors. For
 this i designed a little board in order to simulate manufacturing errors. In this
 post I want to give you a short introduction to JTAG and how to use it.</p>

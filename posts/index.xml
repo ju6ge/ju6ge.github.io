@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Website - Felix Richter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.felixrichter.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Using Boundary Scan for PCB debugging</title>
       <link>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</link>
-      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</guid>
       <description>I did a seminar talk on JTAG and how to use it to check a PCB for errors. For this i designed a little board in order to simulate manufacturing errors. In this post I want to give you a short introduction to JTAG and how to use it.
