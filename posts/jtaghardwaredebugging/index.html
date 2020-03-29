@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Using Boundary Scan for PCB debugging // Website - Felix Richter</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.67.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Felix Richter" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://www.felixrichter.tech/css/main.min.2aebae617d0c075bc5a4b8682bd7023d9b22ac1150b291a34f99a4c1ffc66e74.css" />
+
+    
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://www.felixrichter.tech/"><img class="app-header-avatar" src="/avatar.jpg" alt="Felix Richter" /></a>
+      <h1>Website - Felix Richter</h1>
+      <p>I am a computer science master student / hacker based in Heidelberg.</p>
+      <div class="app-header-nav">
+	      <a href="/posts">		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
+  <title>folder</title>
+  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+</svg> Posts</a>
+	      <a href="/writeups">	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
+  <title>folder</title>
+  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+</svg> WriteUps</a>
+	      <a href="/">			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
+  <title>folder</title>
+  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+</svg> About</a>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ju6ge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://twitter.com/ju6ge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://chaos.social/@judge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-user">
+  <title>user</title>
+  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Using Boundary Scan for PCB debugging</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 29, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://www.felixrichter.tech/tags/hardware-debugging/">hardware-debugging</a><a class="tag" href="https://www.felixrichter.tech/tags/jtag/">jtag</a></div></div>
+    </header>
+    <div class="post-content">
+      <p>I did a seminar talk on JTAG and how to use it to check a PCB for errors. For
+this i designed a little board in order to simulate manufacturing errors. In this
+post I want to give you a short introduction to JTAG and how to use it.</p>
+<h1 id="what-is-boundary-scan">What is Boundary-scan</h1>
+<p>Boundary-scan was developed to simplify testing of integrated circuits. To do this
+the Joint Test Action Group introduced the Boundary Scan architecture as a standard
+and today it has replaced the old testing methods because of its cost efficiency and speed
+up of test development and execution.</p>
+<h3 id="so-how-does-this-work">So how does this work?</h3>
+<p>I will be just covering the basics here. If you want a more detailed introduction, you can read the articles referenced
+at the end of this post.</p>
+<p>Boundary-scan is a technology which places cells at the circuits boundary that can sample the circuit inputs and
+also drive its outputs. This can be done while the circuit is operating and it is controlled via the JTAG interface.
+With these cells in place we wan test the internal logic of the circuit as well as the interconnects between
+the devices on a board.</p>
+<figure>
+    <img src="/jtag_debug/bs_register.png" width="400"/> 
+</figure>
+
+<p>In the picture above you can see an overview of the boundary-scan architecture. This picture only shows one JTAG device, but
+on more complex PCB there are many such devices that are connected in a JTAG chain. This means that the data out of one
+chip is connected to the input of the next.</p>
+<p>In order for us use this architecture, we need to connect to the four JTAG pins:</p>
+<ul>
+<li><strong>TDI</strong> Test Data In</li>
+<li><strong>TDO</strong> Test Data Out</li>
+<li><strong>TCK</strong> Test Clock</li>
+<li><strong>TMS</strong> Test Mode Select</li>
+</ul>
+<p>Once connected we can control all of the devices in the JTAG chain. In general we can perform two different types
+of actions. We can either write/read data or we can write instructions. Testing a circuit involves both of theses
+actions. By writing instructions we can set the connected circuits into different modes. And by writing data
+we can set the pins to the desired levels as well as read the results.</p>
+<p>There are three different instructions we are interested in when testing interconnects:</p>
+<ul>
+<li><strong>SAMPLE/PRELOAD</strong></li>
+<li><strong>EXTEST</strong></li>
+<li><strong>BYPASS</strong></li>
+</ul>
+<p>With the <strong>SAMPLE/PRELOAD</strong> instruction the boundary-scan cells will sample the inputs of the circuit, and when shifting in
+data we can read values received at the pins. We can also use this command to load data into the boundary-scan cells. The
+<strong>EXTEST</strong> instruction will set the output of the pins to the values provided in the boundary-scan cells and the <strong>BYPASS</strong>
+instruction lets us skip devices in the chain that are not of interest to the test currently performed.</p>
+<p>With these instructions we can set pins of a device to a logic level and test at the receiving circuit if the correct logic
+level was received.</p>
+<h1 id="the-hardware">The Hardware</h1>
+<p>We need to connect to the JTAG pins of a devices. If they are exposed there probably is a connector on the board. If not it may
+be possible to solder wires directly to the pins. In any case we will need a JTAG adapter in order to connect them to a normal
+computer via USB. I am using a JLink adapter which features a 20 pin JTAG connector.</p>
+<p>The PCB I am using for testing is a small circuit I designed myself, it also has a 20 pin connector which exposes the JTAG pins.
+Here is the layout:</p>
+<figure>
+    <img src="/jtag_debug/board_schem.png" width="600"/> 
+</figure>
+
+<p>It features two MAX V Altera CPLDs that implement the boundary-scan architecture and are connected in a JTAG chain.
+To test some connections between them I connected eight of their pins at the top and added a dip switch to simulate
+shorts between the wires as well as pull ups and pull downs.</p>
+<h1 id="tooling">Tooling</h1>
+<p>Okay so we got a PCB and connected it to a computer with a JTAG adapter now what? How do get the tests running?</p>
+<p>Well this is where it gets hard, because there is no nice open source software that does it all for us. We need to write the
+test ourselves and for that we need to know the details of the interconnects on our PCB and the details of how the boundary-scan
+architecture is implemented in the devices in our JTAG chain.</p>
+<h2 id="bsdl-files">BSDL Files</h2>
+<p>The Boundary-scan standard does not tell manufacturers what bit codes to use to encode the instructions, but it does require
+them to publish the so called BSDL (Boundary Scan Description Language) files free of charge for their devices. These files
+use a dialect derived from VHDL a hardware description language and describe all information needed to use a devices
+boundary-scan architecture. For example:</p>
+<ul>
+<li>Instruction register description</li>
+<li>Boundary-scan cell description</li>
+<li>Pin mappings</li>
+<li>and more</li>
+</ul>
+<p>Basically all information we might want to know about a specific device is in that file.</p>
+<h2 id="svf-files">SVF Files</h2>
+<p>Most JTAG adapter tool chains support a file format called SVF (Serial Vector Format). These are plain text files that describe
+what data or instructions to write to the JTAG connection. It has no knowledge about the JTAG chain of devices or any of
+there properties. We can just specify what data/instructions to shift in and what results we expect to be shifted out.</p>
+<h2 id="designing-a-simple-test">Designing a simple test</h2>
+<p>Okay so putting it all together. Lets say we want to test two neighboring interconnects for a bridging fault.</p>
+<p>On my example PCB two neighboring interconnects are connected as follows:</p>
+<ol>
+<li>CHIP 1 <strong>IO56</strong> -  CHIP 2 <strong>IO49</strong></li>
+<li>CHIP 1 <strong>IO55</strong> -  CHIP 2 <strong>IO50</strong></li>
+</ol>
+<p>So if we set <strong>IO56</strong> of the first chip to a logic 1 and <strong>IO55</strong> to logic 0, we would expect to receive a logic 1 on <strong>IO49</strong>
+and a logic 0 at <strong>IO50</strong> on the second chip. If we receive a logic 1 at <strong>IO50</strong> that means that there is a bridging fault between
+the interconnects.</p>
+<p>To write a test for this we need to write an SVF file that we can run with the JTAG adapter tool chain. It needs to complete the
+following steps:</p>
+<ol>
+<li>Set first chip into <strong>SAMPLE/PRELOAD</strong> mode. (Shift in Instructions)</li>
+<li>Load Test pattern into first chip (Shift in Data)</li>
+<li>Set first chip to <strong>EXTEST</strong> and second chip to <strong>SAMPLE/PRELOAD</strong> mode (Shift in Instructions)</li>
+<li>Shift in dummy data to receive the data sampled from chip 2 and compare against the expected result (Shift in Data)</li>
+</ol>
+<p>The following SVF files does exactly this:</p>
+<pre><code class="language-svf" data-lang="svf">TRST OFF;
+ENDIR IDLE;
+ENDDR IDLE;
+STATE RESET;
+STATE IDLE;
+FREQUENCY 10000000 HZ;
+SIR 20 TDI (01405);
+SDR 480 TDI (000000000000000000000000000000000000000000800000000000000
+	000000000000000000000000000000000000000000000000000000000000000);
+SIR 20 TDI (03c05);
+SDR 480 TDI (0) TDO (000000000000000000000000000000000000000000000000
+	00000000000000000000000000000000000000000000000100000000000000000
+	0000000) MASK (00000000000000000000000000000000000000000000000000
+	00000000000000000000000000000000000000000000012000000000000000000
+	00000);
+</code></pre><p>Up until the first line starting with <em>SIR</em> all we are doing is making sure the boundary-scan circuit is in a known state and setting the
+speed at which we want to operate.</p>
+<p><strong>SIR</strong> means we want to write instruction data. We need to specify the length and since we have to chips with both 10 bit instruction registers
+we are writing 20 bits of data. The data we want to write is specified behind the <em>TDI</em> statement as a hex string surrounded by parenthesis.</p>
+<p><strong>SDR</strong> works the same as <em>SIR</em> but instead of instruction data we are just writing data. In this case we are writing 480 bits, since
+both chips have a boundary-scan register length of 240 bits. If we want to compare the shifted out data against the expected data
+we have to write the expected result as a hex string behind the <em>TDO</em> statement and we can even mask the result so that we only look
+at the bits we are interested in.</p>
+<p>How do we know what data to write and what data to expect? Well for that we have to look at the BSDL files of the devices in our
+JTAG chain and figure out which pin is mapped to which bit in the data. Of course writing a SVF by hand is very tedious, so instead
+I created some <a href="https://github.com/ju6ge/jtag_testing">python scripts</a> to help me with the task. Feel free to use them for your
+own projects.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Using Boundary-scan for PCB testing is very nice when trying to automatically test PCBs. Sadly there is little to no open source
+software which makes it easy to design tests for your own layouts. Which means that you still have to do a lot of information gathering
+if you want to use this technology. But once the tests are implemented testing a PCB becomes a very easy and fast.</p>
+<p>I hope this blog post gave you an idea of what you need to do, to get up and running with boundary-scan testing. If you have any feedback
+feel free to contact me.</p>
+<h3 id="further-reading-material">Further Reading Material</h3>
+<ul>
+<li><a href="http://www.ti.com/lit/an/ssya002c/ssya002c.pdf">Texas Instruments Testabilty Primer</a></li>
+<li><a href="https://pdfs.semanticscholar.org/9acb/ea9b3ddd1a80a01434d32912821837bd9af3.pdf">Paper on Interconnect Testing</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
