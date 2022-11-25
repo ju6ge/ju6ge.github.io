@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c on Website - Felix Richter</title>
+    <link>https://www.felixrichter.tech/tags/c/</link>
+    <description>Recent content in c on Website - Felix Richter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Hardware Peripherals</title>
+      <link>https://www.felixrichter.tech/posts/hardwareperipherals/</link>
+      <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.felixrichter.tech/posts/hardwareperipherals/</guid>
+      <description>Lately I have been doing programming for embedded systems such as the esp32 and esp8266, and additionally I did a course on embedded systems for my masters degree. This introduced me to the wonderful world of programming close to the hardware level, and inspired me to write this post about hardware peripherals.
+What are Hardware Peripherals? Hardware Peripherals are specialized pieces of silicon that are built into a processor. They are used to perform a diverse set of task.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Programming the Raspberry Pi with Rust 🦀 // Website - Felix Richter</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.105.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Felix Richter" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.85214c468d4d85b8fc0f64c22f3fb85e17bf0abdb94413d054ec947ce761cc18.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Programming the Raspberry Pi with Rust 🦀"/>
+<meta name="twitter:description" content="This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the recording. Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).
+From zero to a working rust project for the raspberry pi. These are the required steps:"/>
+
+    <meta property="og:title" content="Programming the Raspberry Pi with Rust 🦀" />
+<meta property="og:description" content="This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the recording. Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).
+From zero to a working rust project for the raspberry pi. These are the required steps:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.felixrichter.tech/posts/rustforraspberrypi/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-25T00:00:00+00:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://www.felixrichter.tech/"><img class="app-header-avatar" src="/avatar.jpg" alt="Felix Richter" /></a>
+      <span class="app-header-title">Website - Felix Richter</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/posts">Posts</a>
+      </nav>
+      <p>Msc Applied Computer Science / hacker based in Heidelberg.</p>
+      <div class="app-header-social">
+        
+          <a href="https://github.com/ju6ge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/ju6ge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://chaos.social/@judge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-user">
+  <title>Mastodon</title>
+  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Programming the Raspberry Pi with Rust 🦀</h1>
+      <div class="post-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 25, 2022
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://www.felixrichter.tech/tags/publish/">publish</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/rust/">rust</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/raspberry-pi/">raspberry-pi</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/cross-compiling/">cross-compiling</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the <a href="https://youtu.be/iCbES_JHKyM">recording</a>.
+Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).</p>
+<p>From zero to a working rust project for the raspberry pi. These are the required steps:</p>
+<ul>
+<li>Setup Rust Project with <code>cargo</code></li>
+<li>Install Rust Arm + Raspberry Pi Toolchain</li>
+<li>Configure Rust Project for cross compilation</li>
+<li>Import crate for GPIO Access</li>
+<li>Profit 💰</li>
+</ul>
+<h2 id="setting-up-a-rust-project">Setting up a Rust Project</h2>
+<p>The first step is to setup a rust project. This is easily accomplished by using the rust tooling.
+Using cargo it is possible it initialize a hello world rust project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; mkdir pi_project
+</span></span><span style="display:flex;"><span>&gt; cd pi_project
+</span></span><span style="display:flex;"><span>&gt; cargo init
+</span></span></code></pre></div><p>This results in the following project structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pi_project
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>├── .gitignore
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main.rs
+</span></span></code></pre></div><p>Building and running the code is now as simple as running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; cargo build
+</span></span><span style="display:flex;"><span>&gt; ./target/debug/pi_project
+</span></span><span style="display:flex;"><span>Hello, world!
+</span></span></code></pre></div><p>Looking at the executable we see that the code was build for the <strong>x86</strong> Architecture.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; file ./target/debug/pi_project
+</span></span><span style="display:flex;"><span>target/debug/pi_project: ELF 64-bit LSB pie executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>0461b95d992ecda8488ad610bb1818344c1eeb8d, <span style="color:#66d9ef">for</span> GNU/Linux 4.4.0, with debug_info, not stripped
+</span></span></code></pre></div><p>To be able to run this code on the raspberry pi the target architecture needs to change to <strong>ARM</strong>.</p>
+<h2 id="rust-arm-toolchain-setup">Rust Arm Toolchain Setup</h2>
+<p>Installing a different target architecture is easy. All that is required is to use rustup. Warning the following list does not mean that your specific pi revision will work, you need to make extra sure to select the correct architecture based on the model of pi you are using! There are differences per revision of the pi.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># for raspberry pi 3/4</span>
+</span></span><span style="display:flex;"><span>&gt; rustup target add aarch64-unknown-linux-gnu
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for raspberry pi 1/zero</span>
+</span></span><span style="display:flex;"><span>&gt; rustup target add arm-unknown-linux-gnueabihf 
+</span></span></code></pre></div><p>This allows telling the cargo to generate <strong>ARM</strong> machine code. This would be all we need if the goal was to write bare metal code.
+But just running <strong><code>cargo build --target arm-unknown-linux-gnueabihf</code></strong> results in an error. This because we still need a linker and
+the matching system libraries to be able to interface correctly with the Linux kernel running on the pi.</p>
+<p>This problem is solved by installing a raspberry pi toolchain. The toolchain can be downloaded from <a href="https://github.com/abhiTronix/raspberry-pi-cross-compilers#-toolchain-downloads">here</a>. They are compatible with the official &ldquo;Raspian OS&rdquo; for the pi. If you are running a different OS on your PI, you may need to look further to find the matching toolchain for your OS.</p>
+<p>In this case the pi is running the newest Raspian, which is based on Debian 11:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; wget https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Bullseye/GCC%2010.3.0/Raspberry%20Pi%201%2C%20Zero/cross-gcc-10.3.0-pi_0-1.tar.gz/download -O toolchain.tar.gz
+</span></span><span style="display:flex;"><span>&gt; tar -xvf toolchain.tar.gz 
+</span></span></code></pre></div><h4 id="configure-cross-compilation">Configure cross compilation</h4>
+<p>Now the rust build system needs to be configured to use the toolchain. This is done by placing a config file in the project root:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pi_project
+</span></span><span style="display:flex;"><span>├── .cargo
+</span></span><span style="display:flex;"><span>│   └── config
+</span></span><span style="display:flex;"><span>├── Cargo.lock
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>├── .gitignore
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main.rs
+</span></span></code></pre></div><p>The configuration instructs the cargo build system to use the cross compiler gcc as linker and sets the directory where arm system libraries are located.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># content of .cargo/config</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">build</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">target</span> = <span style="color:#e6db74">&#34;arm-unknown-linux-gnueabihf&#34;</span> <span style="color:#75715e">#set default target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#for raspberry pi 1/zero</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">arm-unknown-linux-gnueabihf</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">linker</span> = <span style="color:#e6db74">&#34;/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/bin/arm-linux-gnueabihf-gcc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rustflags</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-C&#34;</span>, <span style="color:#e6db74">&#34;link-arg=--sysroot=/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/arm-linux-gnueabihf/libc&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#for raspberry pi 3/4</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">aarch64-unknown-linux-gnu</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">linker</span> = <span style="color:#e6db74">&#34;/home/judge/.toolchains/cross-pi-gcc-10.3.0-64/bin/aarch64-linux-gnu-gcc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rustflags</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-C&#34;</span>, <span style="color:#e6db74">&#34;link-arg=--sysroot=/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/aarch64-linux-gnu/libc&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>This sets the default target of the project to <strong><code>arm-unknown-linux-gnueabihf</code></strong>, now running <strong><code>cargo build</code></strong> results in the following <strong>ARM</strong> binary being created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>file target/arm-unknown-linux-gnueabihf/debug/pi_project
+</span></span><span style="display:flex;"><span>target/arm-unknown-linux-gnueabihf/debug/pi_project: ELF 32-bit LSB pie executable, ARM, EABI5 version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib/ld-linux-armhf.so.3, <span style="color:#66d9ef">for</span> GNU/Linux 3.2.0, with debug_info, not stripped
+</span></span></code></pre></div><p>It can now be copied to the raspberry pi and be executed.</p>
+<h2 id="gpio-access">GPIO Access</h2>
+<p>Until this point the source of the application was not touched. This changes now because just executing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// contents of src/main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>is boring! If we have a raspberry pi it would be much more fun to use it to control some hardware 💪.
+Thankfully there already is a library that we can use to do just that. <a href="https://crates.io/crates/rppal">rppal</a> enables
+access to the GPIO pins of the pi. Including the library in the project requires declaring it as a dependency in the
+<strong><code>Cargo.toml</code></strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rppal</span> = <span style="color:#e6db74">&#34;0.14.0&#34;</span>
+</span></span></code></pre></div><p>Now we can use the library to make an led blink.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::thread;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::time::Duration;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rppal::gpio::Gpio;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> GPIO_LED: <span style="color:#66d9ef">u8</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> gpio <span style="color:#f92672">=</span> Gpio::new().expect(<span style="color:#e6db74">&#34;Unable to access GPIO!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> pin <span style="color:#f92672">=</span> gpio.get(GPIO_LED).unwrap().into_output();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        pin.toggle();
+</span></span><span style="display:flex;"><span>        thread::sleep(Duration::from_millis(<span style="color:#ae81ff">500</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And that&rsquo;s basically it. Now we can use rust to program the raspberry pi to do any task we want. We can even get fancy and use
+an async runtime to execute many tasks in parallel.</p>
+<p>I hope this summary is useful to you and feel free to contact me if you have questions or find this post useful.</p>
+<p>Happy coding 🧑‍💻 …</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

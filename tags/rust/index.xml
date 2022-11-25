@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Website - Felix Richter</title>
-    <link>https://www.felixrichter.tech/posts/</link>
-    <description>Recent content in Posts on Website - Felix Richter</description>
+    <title>rust on Website - Felix Richter</title>
+    <link>https://www.felixrichter.tech/tags/rust/</link>
+    <description>Recent content in rust on Website - Felix Richter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programming the Raspberry Pi with Rust 🦀</title>
       <link>https://www.felixrichter.tech/posts/rustforraspberrypi/</link>
@@ -15,16 +15,6 @@
       <guid>https://www.felixrichter.tech/posts/rustforraspberrypi/</guid>
       <description>This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the recording. Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).
 From zero to a working rust project for the raspberry pi. These are the required steps:</description>
-    </item>
-    
-    <item>
-      <title>Using Boundary Scan for PCB debugging</title>
-      <link>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</link>
-      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</guid>
-      <description>I did a seminar talk on JTAG and how to use it to check a PCB for errors. For this i designed a little board in order to simulate manufacturing errors. In this post I want to give you a short introduction to JTAG and how to use it.
-What is Boundary-scan Boundary-scan was developed to simplify testing of integrated circuits. To do this the Joint Test Action Group introduced the Boundary Scan architecture as a standard and today it has replaced the old testing methods because of its cost efficiency and speed up of test development and execution.</description>
     </item>
     
     <item>

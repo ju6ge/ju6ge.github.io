@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cross-compiling on Website - Felix Richter</title>
+    <link>https://www.felixrichter.tech/tags/cross-compiling/</link>
+    <description>Recent content in cross-compiling on Website - Felix Richter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/cross-compiling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming the Raspberry Pi with Rust 🦀</title>
+      <link>https://www.felixrichter.tech/posts/rustforraspberrypi/</link>
+      <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.felixrichter.tech/posts/rustforraspberrypi/</guid>
+      <description>This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the recording. Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).
+From zero to a working rust project for the raspberry pi. These are the required steps:</description>
+    </item>
+    
+  </channel>
+</rss>

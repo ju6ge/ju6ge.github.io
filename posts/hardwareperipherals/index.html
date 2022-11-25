@@ -2,51 +2,64 @@
 <html lang="en-us">
   <head>
     <title>Introduction to Hardware Peripherals // Website - Felix Richter</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.67.1" />
+    <meta name="generator" content="Hugo 0.105.0">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Felix Richter" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="https://www.felixrichter.tech/css/main.min.2aebae617d0c075bc5a4b8682bd7023d9b22ac1150b291a34f99a4c1ffc66e74.css" />
+    <link rel="stylesheet" href="/css/main.min.85214c468d4d85b8fc0f64c22f3fb85e17bf0abdb94413d054ec947ce761cc18.css" />
 
     
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduction to Hardware Peripherals"/>
+<meta name="twitter:description" content="Lately I have been doing programming for embedded systems such as the esp32 and esp8266, and additionally I did a course on embedded systems for my masters degree. This introduced me to the wonderful world of programming close to the hardware level, and inspired me to write this post about hardware peripherals.
+What are Hardware Peripherals? Hardware Peripherals are specialized pieces of silicon that are built into a processor. They are used to perform a diverse set of task."/>
+
+    <meta property="og:title" content="Introduction to Hardware Peripherals" />
+<meta property="og:description" content="Lately I have been doing programming for embedded systems such as the esp32 and esp8266, and additionally I did a course on embedded systems for my masters degree. This introduced me to the wonderful world of programming close to the hardware level, and inspired me to write this post about hardware peripherals.
+What are Hardware Peripherals? Hardware Peripherals are specialized pieces of silicon that are built into a processor. They are used to perform a diverse set of task." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.felixrichter.tech/posts/hardwareperipherals/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-12-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-27T00:00:00+00:00" />
+
+
 
   </head>
   <body>
     <header class="app-header">
       <a href="https://www.felixrichter.tech/"><img class="app-header-avatar" src="/avatar.jpg" alt="Felix Richter" /></a>
-      <h1>Website - Felix Richter</h1>
-      <p>I am a computer science master student / hacker based in Heidelberg.</p>
-      <div class="app-header-nav">
-	      <a href="/posts">		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
-  <title>folder</title>
-  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-</svg> Posts</a>
-	      <a href="/writeups">	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
-  <title>folder</title>
-  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-</svg> WriteUps</a>
-	      <a href="/">			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-folder">
-  <title>folder</title>
-  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-</svg> About</a>
-      </div>
+      <span class="app-header-title">Website - Felix Richter</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Home</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/posts">Posts</a>
+      </nav>
+      <p>Msc Applied Computer Science / hacker based in Heidelberg.</p>
       <div class="app-header-social">
         
-          <a target="_blank" href="https://github.com/ju6ge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>github</title>
+          <a href="https://github.com/ju6ge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>Github</title>
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg></a>
+</svg>
+          </a>
         
-          <a target="_blank" href="https://twitter.com/ju6ge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
-  <title>twitter</title>
+          <a href="https://twitter.com/ju6ge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>Twitter</title>
   <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-</svg></a>
+</svg>
+          </a>
         
-          <a target="_blank" href="https://chaos.social/@judge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-user">
-  <title>user</title>
+          <a href="https://chaos.social/@judge" target="_blank" rel="noreferrer noopener me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-user">
+  <title>Mastodon</title>
   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
-</svg></a>
+</svg>
+          </a>
         
       </div>
     </header>
@@ -57,24 +70,30 @@
       <h1 class ="post-title">Introduction to Hardware Peripherals</h1>
       <div class="post-meta">
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
   <title>calendar</title>
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
 </svg>
           Dec 27, 2019
         </div>
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
   <title>clock</title>
   <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
 </svg>
           8 min read
-        </div><div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
   <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
 </svg>
-          <a class="tag" href="https://www.felixrichter.tech/tags/embedded-programming/">embedded-programming</a><a class="tag" href="https://www.felixrichter.tech/tags/c/">c</a><a class="tag" href="https://www.felixrichter.tech/tags/rust/">rust</a></div></div>
+              <a class="tag" href="https://www.felixrichter.tech/tags/publish/">publish</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/embedded-programming/">embedded-programming</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/c/">c</a>
+              <a class="tag" href="https://www.felixrichter.tech/tags/rust/">rust</a>
+        </div>
+      </div>
     </header>
     <div class="post-content">
       <p>Lately I have been doing programming for embedded systems such as the
@@ -155,37 +174,36 @@ a configurable counter attached to a clock signal.</p>
 memory addresses of the peripherals and exposes them to us as definitions and
 structures. By just using these we are automatically writing to the correct
 addresses.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;atsame70.h&#34; </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>	
-	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout_ms</span>(<span style="color:#66d9ef">int</span> ms) {
-		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
-</span><span style="color:#75715e"></span>		RTT<span style="color:#f92672">-&gt;</span>RTT_MR <span style="color:#f92672">=</span> RTT_MR_RTPRES(<span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">|</span> RTT_MR_RTTRST; 
-		
-		<span style="color:#66d9ef">while</span> ( (RTT<span style="color:#f92672">-&gt;</span>RTT_VR <span style="color:#f92672">|</span> RTT_VR_CRTV_Msk) <span style="color:#f92672">&lt;</span> ms) {
-			<span style="color:#75715e">//wait for counter to have counted to desired timeout
-</span><span style="color:#75715e"></span>		}
-	}
-
-	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">blink_led</span>() {
-		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
-</span><span style="color:#75715e"></span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_PER <span style="color:#f92672">=</span> PIO_PC19; 
-		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_OER <span style="color:#f92672">=</span> PIO_PC19;
-
-		<span style="color:#66d9ef">while</span>(true) {
-			<span style="color:#75715e">//turn led on 
-</span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_SODR <span style="color:#f92672">=</span> PIO_PC19;
-			
-			timeout_ms(<span style="color:#ae81ff">500</span>); 
-			
-			<span style="color:#75715e">//turn led off 
-</span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_CODR <span style="color:#f92672">=</span> PIO_PC19; 
-			
-			timeout_ms(<span style="color:#ae81ff">500</span>);
-		}
-}
-
-</code></pre></div><h4 id="timeouts">Timeouts</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>	<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;atsame70.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout_ms</span>(<span style="color:#66d9ef">int</span> ms) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		RTT<span style="color:#f92672">-&gt;</span>RTT_MR <span style="color:#f92672">=</span> RTT_MR_RTPRES(<span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">|</span> RTT_MR_RTTRST; 
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> ( (RTT<span style="color:#f92672">-&gt;</span>RTT_VR <span style="color:#f92672">|</span> RTT_VR_CRTV_Msk) <span style="color:#f92672">&lt;</span> ms) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//wait for counter to have counted to desired timeout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">blink_led</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_PER <span style="color:#f92672">=</span> PIO_PC19; 
+</span></span><span style="display:flex;"><span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_OER <span style="color:#f92672">=</span> PIO_PC19;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(true) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led on 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_SODR <span style="color:#f92672">=</span> PIO_PC19;
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#ae81ff">500</span>); 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led off 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_CODR <span style="color:#f92672">=</span> PIO_PC19; 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="timeouts">Timeouts</h4>
 <p>Since the device can vary it&rsquo;s clock speed it is not desirable to implement a
 delay with just waiting a specified amount of clock cycles. Instead we
 are going to use the atsame70 <em>Real Time Timer</em> (RTT).</p>
@@ -194,8 +212,7 @@ the data sheet. In short we have to configure the clock source since there are
 two at different speeds. Scale how many clock cycles trigger the counter and
 reset the peripheral for the new setting to take affect.</p>
 <p>To do this we have to write to a memory mapped register:</p>
-<figure>
-    <img src="/hardware_peripherals/rtt_reg.png"/> 
+<figure><img src="/hardware_peripherals/rtt_reg.png"/>
 </figure>
 
 <p>In the figure we can see all the registers that are connected to the RTT. All
@@ -242,8 +259,7 @@ the SPI peripheral control over the pins it needs to communicate.</p>
 </li>
 </ol>
 <p>They all have the same structure so i am just going to show you one of them:</p>
-<figure>
-    <img src="/hardware_peripherals/pio_reg.png"/> 
+<figure><img src="/hardware_peripherals/pio_reg.png"/>
 </figure>
 
 <p>Basically for every pin controlled by the PIO there is a bit. So one PIO gives us control over 32 pins.
@@ -263,45 +279,45 @@ called svd2rust that allows us to auto-generate a library that we can use
 to address the correct peripheral registers. All we need is the svd file of
 the processor we are using, this is an xml file describing all the peripherals
 and their register values.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">	<span style="color:#66d9ef">use</span> atsame70q21::{Peripherals}
-	
-	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">timeout_ms</span>(peripherals : <span style="color:#66d9ef">&amp;</span> <span style="color:#a6e22e">Peripherals</span>, <span style="color:#66d9ef">u32</span> ms) {
-		<span style="color:#66d9ef">let</span> rtt <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.RTT;
-		
-		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
-</span><span style="color:#75715e"></span>		rtt.rtt_mr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> {
-			<span style="color:#66d9ef">unsafe</span> {w.rtpres().bits(<span style="color:#ae81ff">0x20</span>);}
-			w.rttdis().clearbit();
-			w.rttrst().set_bit()
-		});
-		<span style="color:#66d9ef">while</span> rtt.rtt_vr.read().crtv().bits() <span style="color:#f92672">&lt;</span> ms {
-			<span style="color:#75715e">// wait for counter to have counted to desired timeout
-</span><span style="color:#75715e"></span>		}
-	}
-
-	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">blink_led</span>() {
-		<span style="color:#66d9ef">let</span> peripherals <span style="color:#f92672">=</span> Peripherals::take().unwrap();
-		
-		<span style="color:#66d9ef">let</span> pioc <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.PIOC;
-		
-		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
-</span><span style="color:#75715e"></span>		pioc.pio_per.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-		pioc.pio_oer.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-		
-		<span style="color:#66d9ef">loop</span>() {
-			<span style="color:#75715e">//turn led on 
-</span><span style="color:#75715e"></span>			pioc.pio_sodr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-			
-			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>); 
-			
-			<span style="color:#75715e">//turn led off 
-</span><span style="color:#75715e"></span>			pioc.pio_codr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-			
-			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>);
-		}
-	}
-</code></pre></div><p>The logic of the rust code is exactly the same as the C example, and since all of the actual functionality we are using
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>	<span style="color:#66d9ef">use</span> atsame70q21::{Peripherals}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">timeout_ms</span>(peripherals : <span style="color:#66d9ef">&amp;</span> <span style="color:#a6e22e">Peripherals</span>, <span style="color:#66d9ef">u32</span> ms) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> rtt <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.RTT;
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		rtt.rtt_mr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">unsafe</span> {w.rtpres().bits(<span style="color:#ae81ff">0x20</span>);}
+</span></span><span style="display:flex;"><span>			w.rttdis().clearbit();
+</span></span><span style="display:flex;"><span>			w.rttrst().set_bit()
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> rtt.rtt_vr.read().crtv().bits() <span style="color:#f92672">&lt;</span> ms {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// wait for counter to have counted to desired timeout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">blink_led</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> peripherals <span style="color:#f92672">=</span> Peripherals::take().unwrap();
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> pioc <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.PIOC;
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		pioc.pio_per.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>		pioc.pio_oer.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">loop</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led on 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			pioc.pio_sodr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>); 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led off 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			pioc.pio_codr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>The logic of the rust code is exactly the same as the C example, and since all of the actual functionality we are using
 is provided by the hardware and not by the language specifics the code looks mostly the same.</p>
 <p>I hope you liked this little excursion into bare metal programming, i am sure i will return with more blog post regarding
 similar topics while i keep experimenting more with rust on bare metal systems.</p>
