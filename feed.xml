@@ -2,9 +2,129 @@
   <title>Felix Richter Website</title>
   <link href="https://www.felixrichter.tech/feed.xml" rel="self"/>
   <link href="https://www.felixrichter.tech/"/>
-  <updated>2020-03-29T00:00:00+00:00</updated>
+  <updated>2022-11-25T00:00:00+00:00</updated>
   <id>https://www.felixrichter.tech/</id>
   <generator>Hugo -- gohugo.io</generator>
+  <entry>
+    <title type="html"><![CDATA[Programming the Raspberry Pi with Rust 🦀]]></title>
+    <link href="https://www.felixrichter.tech/posts/rustforraspberrypi/"/>
+    <id>https://www.felixrichter.tech/posts/rustforraspberrypi/</id>
+    <author>
+      <name>Felix Richter</name>
+    </author>
+	<published>2022-11-25T00:00:00+00:00</published>
+	<updated>2022-11-25T00:00:00+00:00</updated>
+	<content type="html"><![CDATA[<p>This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the <a href="https://youtu.be/iCbES_JHKyM">recording</a>.
+Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).</p>
+<p>From zero to a working rust project for the raspberry pi. These are the required steps:</p>
+<ul>
+<li>Setup Rust Project with <code>cargo</code></li>
+<li>Install Rust Arm + Raspberry Pi Toolchain</li>
+<li>Configure Rust Project for cross compilation</li>
+<li>Import crate for GPIO Access</li>
+<li>Profit 💰</li>
+</ul>
+<h2 id="setting-up-a-rust-project">Setting up a Rust Project</h2>
+<p>The first step is to setup a rust project. This is easily accomplished by using the rust tooling.
+Using cargo it is possible it initialize a hello world rust project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; mkdir pi_project
+</span></span><span style="display:flex;"><span>&gt; cd pi_project
+</span></span><span style="display:flex;"><span>&gt; cargo init
+</span></span></code></pre></div><p>This results in the following project structure:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pi_project
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>├── .gitignore
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main.rs
+</span></span></code></pre></div><p>Building and running the code is now as simple as running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; cargo build
+</span></span><span style="display:flex;"><span>&gt; ./target/debug/pi_project
+</span></span><span style="display:flex;"><span>Hello, world!
+</span></span></code></pre></div><p>Looking at the executable we see that the code was build for the <strong>x86</strong> Architecture.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; file ./target/debug/pi_project
+</span></span><span style="display:flex;"><span>target/debug/pi_project: ELF 64-bit LSB pie executable, x86-64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>0461b95d992ecda8488ad610bb1818344c1eeb8d, <span style="color:#66d9ef">for</span> GNU/Linux 4.4.0, with debug_info, not stripped
+</span></span></code></pre></div><p>To be able to run this code on the raspberry pi the target architecture needs to change to <strong>ARM</strong>.</p>
+<h2 id="rust-arm-toolchain-setup">Rust Arm Toolchain Setup</h2>
+<p>Installing a different target architecture is easy. All that is required is to use rustup. Warning the following list does not mean that your specific pi revision will work, you need to make extra sure to select the correct architecture based on the model of pi you are using! There are differences per revision of the pi.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># for raspberry pi 3/4</span>
+</span></span><span style="display:flex;"><span>&gt; rustup target add aarch64-unknown-linux-gnu
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for raspberry pi 1/zero</span>
+</span></span><span style="display:flex;"><span>&gt; rustup target add arm-unknown-linux-gnueabihf 
+</span></span></code></pre></div><p>This allows telling the cargo to generate <strong>ARM</strong> machine code. This would be all we need if the goal was to write bare metal code.
+But just running <strong><code>cargo build --target arm-unknown-linux-gnueabihf</code></strong> results in an error. This because we still need a linker and
+the matching system libraries to be able to interface correctly with the Linux kernel running on the pi.</p>
+<p>This problem is solved by installing a raspberry pi toolchain. The toolchain can be downloaded from <a href="https://github.com/abhiTronix/raspberry-pi-cross-compilers#-toolchain-downloads">here</a>. They are compatible with the official &ldquo;Raspian OS&rdquo; for the pi. If you are running a different OS on your PI, you may need to look further to find the matching toolchain for your OS.</p>
+<p>In this case the pi is running the newest Raspian, which is based on Debian 11:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>&gt; wget https://sourceforge.net/projects/raspberry-pi-cross-compilers/files/Raspberry%20Pi%20GCC%20Cross-Compiler%20Toolchains/Bullseye/GCC%2010.3.0/Raspberry%20Pi%201%2C%20Zero/cross-gcc-10.3.0-pi_0-1.tar.gz/download -O toolchain.tar.gz
+</span></span><span style="display:flex;"><span>&gt; tar -xvf toolchain.tar.gz 
+</span></span></code></pre></div><h4 id="configure-cross-compilation">Configure cross compilation</h4>
+<p>Now the rust build system needs to be configured to use the toolchain. This is done by placing a config file in the project root:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pi_project
+</span></span><span style="display:flex;"><span>├── .cargo
+</span></span><span style="display:flex;"><span>│   └── config
+</span></span><span style="display:flex;"><span>├── Cargo.lock
+</span></span><span style="display:flex;"><span>├── Cargo.toml
+</span></span><span style="display:flex;"><span>├── .gitignore
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    └── main.rs
+</span></span></code></pre></div><p>The configuration instructs the cargo build system to use the cross compiler gcc as linker and sets the directory where arm system libraries are located.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#75715e"># content of .cargo/config</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">build</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">target</span> = <span style="color:#e6db74">&#34;arm-unknown-linux-gnueabihf&#34;</span> <span style="color:#75715e">#set default target</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#for raspberry pi 1/zero</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">arm-unknown-linux-gnueabihf</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">linker</span> = <span style="color:#e6db74">&#34;/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/bin/arm-linux-gnueabihf-gcc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rustflags</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-C&#34;</span>, <span style="color:#e6db74">&#34;link-arg=--sysroot=/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/arm-linux-gnueabihf/libc&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#for raspberry pi 3/4</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">aarch64-unknown-linux-gnu</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">linker</span> = <span style="color:#e6db74">&#34;/home/judge/.toolchains/cross-pi-gcc-10.3.0-64/bin/aarch64-linux-gnu-gcc&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rustflags</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;-C&#34;</span>, <span style="color:#e6db74">&#34;link-arg=--sysroot=/home/judge/.toolchains/cross-pi-gcc-10.3.0-0/aarch64-linux-gnu/libc&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>This sets the default target of the project to <strong><code>arm-unknown-linux-gnueabihf</code></strong>, now running <strong><code>cargo build</code></strong> results in the following <strong>ARM</strong> binary being created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>file target/arm-unknown-linux-gnueabihf/debug/pi_project
+</span></span><span style="display:flex;"><span>target/arm-unknown-linux-gnueabihf/debug/pi_project: ELF 32-bit LSB pie executable, ARM, EABI5 version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib/ld-linux-armhf.so.3, <span style="color:#66d9ef">for</span> GNU/Linux 3.2.0, with debug_info, not stripped
+</span></span></code></pre></div><p>It can now be copied to the raspberry pi and be executed.</p>
+<h2 id="gpio-access">GPIO Access</h2>
+<p>Until this point the source of the application was not touched. This changes now because just executing</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#75715e">// contents of src/main.rs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>is boring! If we have a raspberry pi it would be much more fun to use it to control some hardware 💪.
+Thankfully there already is a library that we can use to do just that. <a href="https://crates.io/crates/rppal">rppal</a> enables
+access to the GPIO pins of the pi. Including the library in the project requires declaring it as a dependency in the
+<strong><code>Cargo.toml</code></strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">rppal</span> = <span style="color:#e6db74">&#34;0.14.0&#34;</span>
+</span></span></code></pre></div><p>Now we can use the library to make an led blink.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::thread;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::time::Duration;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rppal::gpio::Gpio;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> GPIO_LED: <span style="color:#66d9ef">u8</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> gpio <span style="color:#f92672">=</span> Gpio::new().expect(<span style="color:#e6db74">&#34;Unable to access GPIO!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> pin <span style="color:#f92672">=</span> gpio.get(GPIO_LED).unwrap().into_output();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        pin.toggle();
+</span></span><span style="display:flex;"><span>        thread::sleep(Duration::from_millis(<span style="color:#ae81ff">500</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And that&rsquo;s basically it. Now we can use rust to program the raspberry pi to do any task we want. We can even get fancy and use
+an async runtime to execute many tasks in parallel.</p>
+<p>I hope this summary is useful to you and feel free to contact me if you have questions or find this post useful.</p>
+<p>Happy coding 🧑‍💻 …</p>
+]]></content>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Using Boundary Scan for PCB debugging]]></title>
     <link href="https://www.felixrichter.tech/posts/jtaghardwaredebugging/"/>
@@ -29,8 +149,7 @@ at the end of this post.</p>
 also drive its outputs. This can be done while the circuit is operating and it is controlled via the JTAG interface.
 With these cells in place we wan test the internal logic of the circuit as well as the interconnects between
 the devices on a board.</p>
-<figure>
-    <img src="/jtag_debug/bs_register.png" width="400"/> 
+<figure><img src="/jtag_debug/bs_register.png" width="400"/>
 </figure>
 
 <p>In the picture above you can see an overview of the boundary-scan architecture. This picture only shows one JTAG device, but
@@ -65,8 +184,7 @@ be possible to solder wires directly to the pins. In any case we will need a JTA
 computer via USB. I am using a JLink adapter which features a 20 pin JTAG connector.</p>
 <p>The PCB I am using for testing is a small circuit I designed myself, it also has a 20 pin connector which exposes the JTAG pins.
 Here is the layout:</p>
-<figure>
-    <img src="/jtag_debug/board_schem.png" width="600"/> 
+<figure><img src="/jtag_debug/board_schem.png" width="600"/>
 </figure>
 
 <p>It features two MAX V Altera CPLDs that implement the boundary-scan architecture and are connected in a JTAG chain.
@@ -112,7 +230,7 @@ following steps:</p>
 <li>Shift in dummy data to receive the data sampled from chip 2 and compare against the expected result (Shift in Data)</li>
 </ol>
 <p>The following SVF files does exactly this:</p>
-<pre><code class="language-svf" data-lang="svf">TRST OFF;
+<pre tabindex="0"><code class="language-svf" data-lang="svf">TRST OFF;
 ENDIR IDLE;
 ENDDR IDLE;
 STATE RESET;
@@ -239,37 +357,36 @@ a configurable counter attached to a clock signal.</p>
 memory addresses of the peripherals and exposes them to us as definitions and
 structures. By just using these we are automatically writing to the correct
 addresses.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">	<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;atsame70.h&#34; </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>	
-	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout_ms</span>(<span style="color:#66d9ef">int</span> ms) {
-		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
-</span><span style="color:#75715e"></span>		RTT<span style="color:#f92672">-&gt;</span>RTT_MR <span style="color:#f92672">=</span> RTT_MR_RTPRES(<span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">|</span> RTT_MR_RTTRST; 
-		
-		<span style="color:#66d9ef">while</span> ( (RTT<span style="color:#f92672">-&gt;</span>RTT_VR <span style="color:#f92672">|</span> RTT_VR_CRTV_Msk) <span style="color:#f92672">&lt;</span> ms) {
-			<span style="color:#75715e">//wait for counter to have counted to desired timeout
-</span><span style="color:#75715e"></span>		}
-	}
-
-	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">blink_led</span>() {
-		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
-</span><span style="color:#75715e"></span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_PER <span style="color:#f92672">=</span> PIO_PC19; 
-		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_OER <span style="color:#f92672">=</span> PIO_PC19;
-
-		<span style="color:#66d9ef">while</span>(true) {
-			<span style="color:#75715e">//turn led on 
-</span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_SODR <span style="color:#f92672">=</span> PIO_PC19;
-			
-			timeout_ms(<span style="color:#ae81ff">500</span>); 
-			
-			<span style="color:#75715e">//turn led off 
-</span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_CODR <span style="color:#f92672">=</span> PIO_PC19; 
-			
-			timeout_ms(<span style="color:#ae81ff">500</span>);
-		}
-}
-
-</code></pre></div><h4 id="timeouts">Timeouts</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>	<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;atsame70.h&#34; </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">timeout_ms</span>(<span style="color:#66d9ef">int</span> ms) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		RTT<span style="color:#f92672">-&gt;</span>RTT_MR <span style="color:#f92672">=</span> RTT_MR_RTPRES(<span style="color:#ae81ff">0x20</span>) <span style="color:#f92672">|</span> RTT_MR_RTTRST; 
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> ( (RTT<span style="color:#f92672">-&gt;</span>RTT_VR <span style="color:#f92672">|</span> RTT_VR_CRTV_Msk) <span style="color:#f92672">&lt;</span> ms) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//wait for counter to have counted to desired timeout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">blink_led</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_PER <span style="color:#f92672">=</span> PIO_PC19; 
+</span></span><span style="display:flex;"><span>		ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_OER <span style="color:#f92672">=</span> PIO_PC19;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(true) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led on 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_SODR <span style="color:#f92672">=</span> PIO_PC19;
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#ae81ff">500</span>); 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led off 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			ATSAME70_BASE_PIOC<span style="color:#f92672">-&gt;</span>PIO_CODR <span style="color:#f92672">=</span> PIO_PC19; 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="timeouts">Timeouts</h4>
 <p>Since the device can vary it&rsquo;s clock speed it is not desirable to implement a
 delay with just waiting a specified amount of clock cycles. Instead we
 are going to use the atsame70 <em>Real Time Timer</em> (RTT).</p>
@@ -278,8 +395,7 @@ the data sheet. In short we have to configure the clock source since there are
 two at different speeds. Scale how many clock cycles trigger the counter and
 reset the peripheral for the new setting to take affect.</p>
 <p>To do this we have to write to a memory mapped register:</p>
-<figure>
-    <img src="/hardware_peripherals/rtt_reg.png"/> 
+<figure><img src="/hardware_peripherals/rtt_reg.png"/>
 </figure>
 
 <p>In the figure we can see all the registers that are connected to the RTT. All
@@ -326,8 +442,7 @@ the SPI peripheral control over the pins it needs to communicate.</p>
 </li>
 </ol>
 <p>They all have the same structure so i am just going to show you one of them:</p>
-<figure>
-    <img src="/hardware_peripherals/pio_reg.png"/> 
+<figure><img src="/hardware_peripherals/pio_reg.png"/>
 </figure>
 
 <p>Basically for every pin controlled by the PIO there is a bit. So one PIO gives us control over 32 pins.
@@ -347,45 +462,45 @@ called svd2rust that allows us to auto-generate a library that we can use
 to address the correct peripheral registers. All we need is the svd file of
 the processor we are using, this is an xml file describing all the peripherals
 and their register values.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">	<span style="color:#66d9ef">use</span> atsame70q21::{Peripherals}
-	
-	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">timeout_ms</span>(peripherals : <span style="color:#66d9ef">&amp;</span> <span style="color:#a6e22e">Peripherals</span>, <span style="color:#66d9ef">u32</span> ms) {
-		<span style="color:#66d9ef">let</span> rtt <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.RTT;
-		
-		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
-</span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
-</span><span style="color:#75715e"></span>		rtt.rtt_mr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> {
-			<span style="color:#66d9ef">unsafe</span> {w.rtpres().bits(<span style="color:#ae81ff">0x20</span>);}
-			w.rttdis().clearbit();
-			w.rttrst().set_bit()
-		});
-		<span style="color:#66d9ef">while</span> rtt.rtt_vr.read().crtv().bits() <span style="color:#f92672">&lt;</span> ms {
-			<span style="color:#75715e">// wait for counter to have counted to desired timeout
-</span><span style="color:#75715e"></span>		}
-	}
-
-	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">blink_led</span>() {
-		<span style="color:#66d9ef">let</span> peripherals <span style="color:#f92672">=</span> Peripherals::take().unwrap();
-		
-		<span style="color:#66d9ef">let</span> pioc <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.PIOC;
-		
-		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
-</span><span style="color:#75715e"></span>		pioc.pio_per.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-		pioc.pio_oer.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-		
-		<span style="color:#66d9ef">loop</span>() {
-			<span style="color:#75715e">//turn led on 
-</span><span style="color:#75715e"></span>			pioc.pio_sodr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-			
-			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>); 
-			
-			<span style="color:#75715e">//turn led off 
-</span><span style="color:#75715e"></span>			pioc.pio_codr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
-			
-			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>);
-		}
-	}
-</code></pre></div><p>The logic of the rust code is exactly the same as the C example, and since all of the actual functionality we are using
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>	<span style="color:#66d9ef">use</span> atsame70q21::{Peripherals}
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">timeout_ms</span>(peripherals : <span style="color:#66d9ef">&amp;</span> <span style="color:#a6e22e">Peripherals</span>, <span style="color:#66d9ef">u32</span> ms) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> rtt <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.RTT;
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// restart timer and set prescaler to count every 32 clock cycles 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// this corresponds to a 1ms clock cycle since the clock frequency is 32 kHz 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		rtt.rtt_mr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">unsafe</span> {w.rtpres().bits(<span style="color:#ae81ff">0x20</span>);}
+</span></span><span style="display:flex;"><span>			w.rttdis().clearbit();
+</span></span><span style="display:flex;"><span>			w.rttrst().set_bit()
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> rtt.rtt_vr.read().crtv().bits() <span style="color:#f92672">&lt;</span> ms {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// wait for counter to have counted to desired timeout
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">blink_led</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> peripherals <span style="color:#f92672">=</span> Peripherals::take().unwrap();
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">let</span> pioc <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>peripherals.PIOC;
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//give control of the pin to the pio -&gt; basically the running code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		pioc.pio_per.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>		pioc.pio_oer.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">loop</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led on 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			pioc.pio_sodr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>); 
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//turn led off 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			pioc.pio_codr.write( <span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w.p19().set_bit() );
+</span></span><span style="display:flex;"><span>			
+</span></span><span style="display:flex;"><span>			timeout_ms(<span style="color:#f92672">&amp;</span>peripherals, <span style="color:#ae81ff">500</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>The logic of the rust code is exactly the same as the C example, and since all of the actual functionality we are using
 is provided by the hardware and not by the language specifics the code looks mostly the same.</p>
 <p>I hope you liked this little excursion into bare metal programming, i am sure i will return with more blog post regarding
 similar topics while i keep experimenting more with rust on bare metal systems.</p>
