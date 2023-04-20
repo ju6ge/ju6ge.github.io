@@ -3,27 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.felixrichter.tech/</loc>
-    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.felixrichter.tech/tags/cross-compiling/</loc>
-    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
+    <loc>https://www.felixrichter.tech/tags/device-sharing/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/networking/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/pipewire/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.felixrichter.tech/posts/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/publish/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/raspberry-pi/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/usbip/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.felixrichter.tech/tags/cross-compiling/</loc>
     <lastmod>2022-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.felixrichter.tech/posts/rustforraspberrypi/</loc>
     <lastmod>2022-11-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.felixrichter.tech/tags/publish/</loc>
-    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.felixrichter.tech/tags/raspberry-pi/</loc>
-    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.felixrichter.tech/tags/rust/</loc>
-    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.felixrichter.tech/tags/</loc>
     <lastmod>2022-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.felixrichter.tech/tags/hardware-debugging/</loc>
