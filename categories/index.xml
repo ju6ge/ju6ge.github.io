@@ -4,7 +4,8 @@
     <title>Categories on Website - Felix Richter</title>
     <link>https://www.felixrichter.tech/categories/</link>
     <description>Recent content in Categories on Website - Felix Richter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.felixrichter.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://www.felixrichter.tech/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

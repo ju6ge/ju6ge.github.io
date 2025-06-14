@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>networking on Website - Felix Richter</title>
+    <title>Networking on Website - Felix Richter</title>
     <link>https://www.felixrichter.tech/tags/networking/</link>
-    <description>Recent content in networking on Website - Felix Richter</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Networking on Website - Felix Richter</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.felixrichter.tech/tags/networking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving Desk Device Utilization with Networking</title>
       <link>https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/</guid>
-      <description>In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
-I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything.</description>
+      <description>&lt;p&gt;In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅.&#xA;But I am really happy with the result. See for yourself …&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://www.felixrichter.tech/desksetup/desk.jpg&#34; width=&#34;1000&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything.&#xA;But I also want to be able to use certain devices from both at the same time. I have been using USB Hubs and the like. But I always was left wanting.&#xA;To be fair my current solution is still not as perfect as in my dreams, but it is damn close.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

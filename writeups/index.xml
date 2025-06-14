@@ -4,7 +4,8 @@
     <title>Write Ups on Website - Felix Richter</title>
     <link>https://www.felixrichter.tech/writeups/</link>
     <description>Recent content in Write Ups on Website - Felix Richter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.felixrichter.tech/writeups/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://www.felixrichter.tech/writeups/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

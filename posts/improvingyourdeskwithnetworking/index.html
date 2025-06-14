@@ -4,31 +4,42 @@
     <title>Improving Desk Device Utilization with Networking // Website - Felix Richter</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.111.3">
+    <meta name="generator" content="Hugo 0.147.7">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Felix Richter" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="/css/main.min.ff529b001bffb92a452d7b48c119d3cd0ef0bfd5890fac8adec27a1bc5a3a247.css" />
+    <link rel="stylesheet" href="/css/main.min.bb074df5e00384ed012cbeed25ed968a45b982c2f85072a799c9aca55db9fc6c.css" />
+    
 
     
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Improving Desk Device Utilization with Networking"/>
-<meta name="twitter:description" content="In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
-I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything."/>
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Improving Desk Device Utilization with Networking">
+  <meta name="twitter:description" content="In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
+I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything. But I also want to be able to use certain devices from both at the same time. I have been using USB Hubs and the like. But I always was left wanting. To be fair my current solution is still not as perfect as in my dreams, but it is damn close.">
 
-    <meta property="og:title" content="Improving Desk Device Utilization with Networking" />
-<meta property="og:description" content="In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
-I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-04-20T00:00:00+00:00" />
+    <meta property="og:url" content="https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/">
+  <meta property="og:site_name" content="Website - Felix Richter">
+  <meta property="og:title" content="Improving Desk Device Utilization with Networking">
+  <meta property="og:description" content="In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
+I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything. But I also want to be able to use certain devices from both at the same time. I have been using USB Hubs and the like. But I always was left wanting. To be fair my current solution is still not as perfect as in my dreams, but it is damn close.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-04-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-04-20T00:00:00+00:00">
+    <meta property="article:tag" content="Publish">
+    <meta property="article:tag" content="Raspberry-Pi">
+    <meta property="article:tag" content="Networking">
+    <meta property="article:tag" content="Pipewire">
+    <meta property="article:tag" content="Usbip">
+    <meta property="article:tag" content="Device-Sharing">
 
 
   </head>
   <body>
     <header class="app-header">
-      <a href="https://www.felixrichter.tech/"><img class="app-header-avatar" src="/avatar.jpg" alt="Felix Richter" /></a>
+      <a href="/"><img class="app-header-avatar" src="/avatar.jpg" alt="Felix Richter" /></a>
       <span class="app-header-title">Website - Felix Richter</span>
       <nav class="app-header-menu">
           <a class="app-header-menu-item" href="/">Home</a>
@@ -40,24 +51,15 @@ I always wanted to be flexible in how I use the devices on my desk. I want to sw
       <div class="app-header-social">
         
           <a href="https://github.com/ju6ge" target="_blank" rel="noreferrer noopener me">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
-  <title>Github</title>
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-</svg>
+            <svg class="icon icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
         
           <a href="https://twitter.com/ju6ge" target="_blank" rel="noreferrer noopener me">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
-  <title>Twitter</title>
-  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-</svg>
+            <svg class="icon icon-twitter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>twitter</title><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
           </a>
         
           <a href="https://chaos.social/@judge" target="_blank" rel="noreferrer noopener me">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-user">
-  <title>Mastodon</title>
-  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
-</svg>
+            <svg class="icon icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>user</title><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           </a>
         
       </div>
@@ -69,37 +71,28 @@ I always wanted to be flexible in how I use the devices on my desk. I want to sw
       <h1 class ="post-title">Improving Desk Device Utilization with Networking</h1>
       <div class="post-meta">
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
-  <title>calendar</title>
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-</svg>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
           Apr 20, 2023
         </div>
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
-  <title>clock</title>
-  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
-</svg>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           15 min read
         </div>
         <div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
-  <title>tag</title>
-  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
-</svg>
-              <a class="tag" href="https://www.felixrichter.tech/tags/publish/">publish</a>
-              <a class="tag" href="https://www.felixrichter.tech/tags/raspberry-pi/">raspberry-pi</a>
-              <a class="tag" href="https://www.felixrichter.tech/tags/networking/">networking</a>
-              <a class="tag" href="https://www.felixrichter.tech/tags/pipewire/">pipewire</a>
-              <a class="tag" href="https://www.felixrichter.tech/tags/usbip/">usbip</a>
-              <a class="tag" href="https://www.felixrichter.tech/tags/device-sharing/">device-sharing</a>
+          <svg class="icon icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <a class="tag" href="/tags/publish/">Publish</a>
+              <a class="tag" href="/tags/raspberry-pi/">Raspberry-Pi</a>
+              <a class="tag" href="/tags/networking/">Networking</a>
+              <a class="tag" href="/tags/pipewire/">Pipewire</a>
+              <a class="tag" href="/tags/usbip/">Usbip</a>
+              <a class="tag" href="/tags/device-sharing/">Device-Sharing</a>
         </div>
       </div>
     </header>
     <div class="post-content">
       <p>In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅.
 But I am really happy with the result. See for yourself …</p>
-<figure><img src="/desksetup/desk.jpg" width="1000"/>
+<figure><img src="/desksetup/desk.jpg" width="1000">
 </figure>
 
 <p>I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything.
@@ -131,7 +124,7 @@ to both the laptop and desktop. What do we need to accomplish that.</p>
 <h4 id="network-setup">Network Setup</h4>
 <p>I do not want to share the devices with my entire home network, I just want to share with devices attached to the desk. Since the raspberry only has one network jack and using wireless for
 streaming data is not a great idea because of increased latency, the first thing I did was setup VLAN that is only availible to the devices on my desk.</p>
-<figure><img src="/desksetup/desk_network.jpg" width="600"/>
+<figure><img src="/desksetup/desk_network.jpg" width="600">
 </figure>
 
 <p>First of the network switch needs to support VLANs, there are a lot of switches capable of doing this. They are a little more expensive then unmanged switches, but a basic models are
@@ -388,7 +381,7 @@ context.exec = [
 </code></pre><p>For this to work the zeroconf deamon needs to be running. On linux the zeroconf implementation is provided by <code>avahi</code>. Most systems probably have it running already.
 On archlinux enable the <code>avaih-daemon</code> via systemd. The daemon also needs to be running on the raspberry pi for the publishing to work.</p>
 <p>If everything worked correctly you should see the audio devices attached to the pi pop up in <code>pavucontrol</code> (after restarting the pipewire-pulse service for the configuration to apply):</p>
-<figure><img src="/desksetup/pavucontrol_devices.png" width="1000"/>
+<figure><img src="/desksetup/pavucontrol_devices.png" width="1000">
 </figure>
 
 <p>Selecting the playback device or mircophone phone should now just work like with a locally attached the device. The really nice thing about this is that you can even use the devices from
@@ -430,7 +423,7 @@ using the <code>usbip</code> utility:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ sudo usbip attach -r 172.16.128.1 -b 1-1.2
 </span></span><span style="display:flex;"><span>$ sudo usbip detach -p <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>With the webcam attached it can be used like any other webcam. For example you could open cheese and take a picture:</p>
-<figure><img src="/desksetup/webcam_cheese.jpg" width="1000"/>
+<figure><img src="/desksetup/webcam_cheese.jpg" width="1000">
 </figure>
 
 <p>After usage the webcam should be detached again, to make it possible for other clients to connect to it. If you forget to detach before powering of the device currently using the camera. You

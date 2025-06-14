@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>publish on Website - Felix Richter</title>
+    <title>Publish on Website - Felix Richter</title>
     <link>https://www.felixrichter.tech/tags/publish/</link>
-    <description>Recent content in publish on Website - Felix Richter</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Publish on Website - Felix Richter</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/publish/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.felixrichter.tech/tags/publish/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving Desk Device Utilization with Networking</title>
       <link>https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/posts/improvingyourdeskwithnetworking/</guid>
-      <description>In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅. But I am really happy with the result. See for yourself …
-I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything.</description>
+      <description>&lt;p&gt;In the past month I have renovated my appartment. Because of this I had to redo my entire desk setup. If you know me that means spending a lot time managing cables 😅.&#xA;But I am really happy with the result. See for yourself …&lt;/p&gt;&#xA;&lt;figure&gt;&lt;img src=&#34;https://www.felixrichter.tech/desksetup/desk.jpg&#34; width=&#34;1000&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I always wanted to be flexible in how I use the devices on my desk. I want to switch between using my laptop and desktop without having to replug everything.&#xA;But I also want to be able to use certain devices from both at the same time. I have been using USB Hubs and the like. But I always was left wanting.&#xA;To be fair my current solution is still not as perfect as in my dreams, but it is damn close.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Programming the Raspberry Pi with Rust 🦀</title>
       <link>https://www.felixrichter.tech/posts/rustforraspberrypi/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/posts/rustforraspberrypi/</guid>
-      <description>This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the recording. Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).
-From zero to a working rust project for the raspberry pi. These are the required steps:</description>
+      <description>&lt;p&gt;This post serves as a summary for a live code I did at our local hacker space. For the full experience please refer to the &lt;a href=&#34;https://youtu.be/iCbES_JHKyM&#34;&gt;recording&lt;/a&gt;.&#xA;Though I probably should warn that the live coding was done in German (and next time I should make sure to increase the font size everywhere for the recording 🙈).&lt;/p&gt;&#xA;&lt;p&gt;From zero to a working rust project for the raspberry pi. These are the required steps:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using Boundary Scan for PCB debugging</title>
       <link>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/posts/jtaghardwaredebugging/</guid>
-      <description>I did a seminar talk on JTAG and how to use it to check a PCB for errors. For this i designed a little board in order to simulate manufacturing errors. In this post I want to give you a short introduction to JTAG and how to use it.
-What is Boundary-scan Boundary-scan was developed to simplify testing of integrated circuits. To do this the Joint Test Action Group introduced the Boundary Scan architecture as a standard and today it has replaced the old testing methods because of its cost efficiency and speed up of test development and execution.</description>
+      <description>&lt;p&gt;I did a seminar talk on JTAG and how to use it to check a PCB for errors. For&#xA;this i designed a little board in order to simulate manufacturing errors. In this&#xA;post I want to give you a short introduction to JTAG and how to use it.&lt;/p&gt;&#xA;&lt;h1 id=&#34;what-is-boundary-scan&#34;&gt;What is Boundary-scan&lt;/h1&gt;&#xA;&lt;p&gt;Boundary-scan was developed to simplify testing of integrated circuits. To do this&#xA;the Joint Test Action Group introduced the Boundary Scan architecture as a standard&#xA;and today it has replaced the old testing methods because of its cost efficiency and speed&#xA;up of test development and execution.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introduction to Hardware Peripherals</title>
       <link>https://www.felixrichter.tech/posts/hardwareperipherals/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/posts/hardwareperipherals/</guid>
-      <description>Lately I have been doing programming for embedded systems such as the esp32 and esp8266, and additionally I did a course on embedded systems for my masters degree. This introduced me to the wonderful world of programming close to the hardware level, and inspired me to write this post about hardware peripherals.
-What are Hardware Peripherals? Hardware Peripherals are specialized pieces of silicon that are built into a processor. They are used to perform a diverse set of task.</description>
+      <description>&lt;p&gt;Lately I have been doing programming for embedded systems such as the&#xA;esp32 and esp8266, and additionally I did a course on embedded systems for&#xA;my masters degree. This introduced me to the wonderful world of programming&#xA;close to the hardware level, and inspired me to write this post about&#xA;hardware peripherals.&lt;/p&gt;&#xA;&lt;h1 id=&#34;what-are-hardware-peripherals&#34;&gt;What are Hardware Peripherals?&lt;/h1&gt;&#xA;&lt;p&gt;Hardware Peripherals are specialized pieces of silicon that are built into&#xA;a processor. They are used to perform a diverse set of task. This includes&#xA;controlling the processors clock speed, power management and communication&#xA;with other devices. They are responsible for configuring the device operation&#xA;and during operation are used to perform tasks in parallel with the main&#xA;cores.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

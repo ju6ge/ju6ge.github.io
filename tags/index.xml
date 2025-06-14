@@ -4,116 +4,93 @@
     <title>Tags on Website - Felix Richter</title>
     <link>https://www.felixrichter.tech/tags/</link>
     <description>Recent content in Tags on Website - Felix Richter</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.felixrichter.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.felixrichter.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>device-sharing</title>
+      <title>Device-Sharing</title>
       <link>https://www.felixrichter.tech/tags/device-sharing/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/device-sharing/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>networking</title>
+      <title>Networking</title>
       <link>https://www.felixrichter.tech/tags/networking/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/networking/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pipewire</title>
+      <title>Pipewire</title>
       <link>https://www.felixrichter.tech/tags/pipewire/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/pipewire/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>publish</title>
+      <title>Publish</title>
       <link>https://www.felixrichter.tech/tags/publish/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/publish/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>raspberry-pi</title>
+      <title>Raspberry-Pi</title>
       <link>https://www.felixrichter.tech/tags/raspberry-pi/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/raspberry-pi/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>usbip</title>
+      <title>Usbip</title>
       <link>https://www.felixrichter.tech/tags/usbip/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/usbip/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cross-compiling</title>
+      <title>Cross-Compiling</title>
       <link>https://www.felixrichter.tech/tags/cross-compiling/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/cross-compiling/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rust</title>
+      <title>Rust</title>
       <link>https://www.felixrichter.tech/tags/rust/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/rust/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hardware-debugging</title>
+      <title>Hardware-Debugging</title>
       <link>https://www.felixrichter.tech/tags/hardware-debugging/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/hardware-debugging/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>jtag</title>
+      <title>Jtag</title>
       <link>https://www.felixrichter.tech/tags/jtag/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/jtag/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>c</title>
+      <title>C</title>
       <link>https://www.felixrichter.tech/tags/c/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/c/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>embedded-programming</title>
+      <title>Embedded-Programming</title>
       <link>https://www.felixrichter.tech/tags/embedded-programming/</link>
       <pubDate>Fri, 27 Dec 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://www.felixrichter.tech/tags/embedded-programming/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
