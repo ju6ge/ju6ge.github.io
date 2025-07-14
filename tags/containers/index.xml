@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Containers on Website - Felix Richter</title>
+    <link>https://www.felixrichter.tech/tags/containers/</link>
+    <description>Recent content in Containers on Website - Felix Richter</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.felixrichter.tech/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting started with Rust on RISCV (ch32)</title>
+      <link>https://www.felixrichter.tech/posts/rustriscvdebugging/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/posts/rustriscvdebugging/</guid>
+      <description>&lt;p&gt;In this Blog post I will explore the process of setting up a minimal rust project for embedded baremetal development. The focus is on getting up and running including setting up a debugging flow for instruction stepping fully integrated into my editor of choice (emacs).&lt;/p&gt;&#xA;&lt;p&gt;As of 2025 many popular microcontrollers such as the esp32 already have a big rust community and some easy templates to get up and running with rust. But even less popular devices already have basic infrastructure in place, though setting up a project to do development on them is a bit more of an exploratory experience. Still a lot of the heavy lifting has already been solved. I still remember when first started doing some embedded rust development in 2019, there was little to build upon, so getting started involved bootstrapping a peripheral access crate and start writing a hardware abstraction layer. That is to say that within the last six years the ecosystem for embedded rust projects has evolved impressively.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

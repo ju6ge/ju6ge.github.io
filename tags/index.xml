@@ -6,8 +6,64 @@
     <description>Recent content in Tags on Website - Felix Richter</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.felixrichter.tech/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Containers</title>
+      <link>https://www.felixrichter.tech/tags/containers/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/containers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emacs-Dape</title>
+      <link>https://www.felixrichter.tech/tags/emacs-dape/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/emacs-dape/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Embedding-Debugging</title>
+      <link>https://www.felixrichter.tech/tags/embedding-debugging/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/embedding-debugging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gdb</title>
+      <link>https://www.felixrichter.tech/tags/gdb/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/gdb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openocd</title>
+      <link>https://www.felixrichter.tech/tags/openocd/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/openocd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Publish</title>
+      <link>https://www.felixrichter.tech/tags/publish/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/publish/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Riscv</title>
+      <link>https://www.felixrichter.tech/tags/riscv/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/riscv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://www.felixrichter.tech/tags/rust/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.felixrichter.tech/tags/rust/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Device-Sharing</title>
       <link>https://www.felixrichter.tech/tags/device-sharing/</link>
@@ -30,13 +86,6 @@
       <description></description>
     </item>
     <item>
-      <title>Publish</title>
-      <link>https://www.felixrichter.tech/tags/publish/</link>
-      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://www.felixrichter.tech/tags/publish/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Raspberry-Pi</title>
       <link>https://www.felixrichter.tech/tags/raspberry-pi/</link>
       <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
@@ -55,13 +104,6 @@
       <link>https://www.felixrichter.tech/tags/cross-compiling/</link>
       <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
       <guid>https://www.felixrichter.tech/tags/cross-compiling/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rust</title>
-      <link>https://www.felixrichter.tech/tags/rust/</link>
-      <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://www.felixrichter.tech/tags/rust/</guid>
       <description></description>
     </item>
     <item>
